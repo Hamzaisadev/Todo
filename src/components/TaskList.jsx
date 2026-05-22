@@ -1,8 +1,9 @@
-import TaskItem from './TaskItem';
-import { Inbox } from 'lucide-react';
+import { Inbox } from 'lucide-react'
+import TaskItem from './TaskItem'
 
 export default function TaskList({ tasks, onToggleComplete, onDelete, onUpdate, categories }) {
-  if (tasks.length === 0) {
+  // empty state
+  if (tasks.length == 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center">
         <Inbox className="w-10 h-10 text-zinc-300 dark:text-zinc-700 mb-3" />
@@ -11,12 +12,12 @@ export default function TaskList({ tasks, onToggleComplete, onDelete, onUpdate, 
           Add one above or try adjusting your filters.
         </p>
       </div>
-    );
+    )
   }
 
   return (
     <div className="flex flex-col gap-2">
-      {tasks.map((task) => (
+      {tasks.map((task, idx) => (
         <TaskItem
           key={task.id}
           task={task}
@@ -27,5 +28,5 @@ export default function TaskList({ tasks, onToggleComplete, onDelete, onUpdate, 
         />
       ))}
     </div>
-  );
+  )
 }
